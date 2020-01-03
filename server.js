@@ -143,11 +143,12 @@ regexServer.get("/regex/dorOrPeriod", (req, res) => {
 });
 
 // single character multiple options
+// use letters in alphabet
 regexServer.get("/regex/singleCharacterMultipleOptions", (req, res) => {
     let testSentence = "Judy, Penny and Will will are the children of robinsons";
-    let testSentence1 = "space spade sport";
+    let testSentence1 = "space spade sport spicy";
     const testRegex = /ju[aeiou]y|penn[aiu]|w[aeiou]ll/gi;
-    const testRegex1 = /sp[aei][cdio]e|spo../gi;
+    const testRegex1 = /sp[aei][cdio]e|sp[a-z]rt|sp[a-e]cy/gi;
     let result = testSentence.match(testRegex);
     let result1 = testSentence1.match(testRegex1);
     res.json({
@@ -160,6 +161,55 @@ regexServer.get("/regex/singleCharacterMultipleOptions", (req, res) => {
         result1: result1
     });
 });
+
+
+// match numbers and letters of the alphabet
+regexServer.get("/matchNumbersAndLetters", (req, res) => {
+    let testSentence = "Clarke489244";
+    const testRegex = /[a-z0-9]/gi;
+    const result = testSentence.match(testRegex);
+    res.json({
+        description: "Match numbers and letters of the alphabet",
+        testSentence: testSentence,
+        testRegex: testRegex.toString(),
+        result: result
+    });
+});
+
+// caret character ^
+// get all the characters avoiding the matchers
+regexServer.get("/avoidLetters", (req, res) => {
+    let testSentence = "They lost in space at 230003";
+    const testRegex = /[^a-d0-2\s]/gi;
+    const result = testSentence.match(testRegex);
+    res.json({
+        description: "get all the characters avoiding the matchers",
+        testSentence: testSentence,
+        testRegex: testRegex.toString(),
+        result: result
+    });
+});
+
+
+// character set [] & caret ^
+regexServer.get("/matchBeginningStringPatterns", (req, res) => {
+    let testSentence = "Judy lost in space at 230003";
+    const testRegex = /^judy/gi;
+    const result = testRegex.test(testSentence);
+    const testRegex1 = /^lost/gi;
+    const result1 = testRegex.test(testSentence);
+    res.json({
+        description: "character set [] and caret ^",
+        testSentence: testSentence,
+        testRegex: testRegex.toString(),
+        result: result,
+        testRegex1: testRegex1.toString(),
+        result1: result1
+    });
+});
+
+
+
 
 
 
