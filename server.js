@@ -192,6 +192,7 @@ regexServer.get("/avoidLetters", (req, res) => {
 
 
 // character set [] & caret ^
+// match beginning string patterns
 regexServer.get("/matchBeginningStringPatterns", (req, res) => {
     let testSentence = "Judy lost in space at 230003";
     const testRegex = /^judy/gi;
@@ -200,6 +201,25 @@ regexServer.get("/matchBeginningStringPatterns", (req, res) => {
     const result1 = testRegex.test(testSentence);
     res.json({
         description: "character set [] and caret ^",
+        testSentence: testSentence,
+        testRegex: testRegex.toString(),
+        result: result,
+        testRegex1: testRegex1.toString(),
+        result1: result1
+    });
+});
+
+
+// character set [] & caret ^
+// match ending string patterns
+regexServer.get("/matchEndingStringPatterns", (req, res) => {
+    let testSentence = "Judy lost in space near resolute";
+    const testRegex = /resolute$/gi;
+    const result = testRegex.test(testSentence);
+    const testRegex1 = /nonresolute$/gi;
+    const result1 = testRegex.test(testSentence);
+    res.json({
+        description: "Match ending string patterns",
         testSentence: testSentence,
         testRegex: testRegex.toString(),
         result: result,
