@@ -164,7 +164,7 @@ regexServer.get("/regex/singleCharacterMultipleOptions", (req, res) => {
 
 
 // match numbers and letters of the alphabet
-regexServer.get("/matchNumbersAndLetters", (req, res) => {
+regexServer.get("/regex/matchNumbersAndLetters", (req, res) => {
     let testSentence = "Clarke489244";
     const testRegex = /[a-z0-9]/gi;
     const result = testSentence.match(testRegex);
@@ -178,7 +178,7 @@ regexServer.get("/matchNumbersAndLetters", (req, res) => {
 
 // caret character ^
 // get all the characters avoiding the matchers
-regexServer.get("/avoidLetters", (req, res) => {
+regexServer.get("/regex/avoidLetters", (req, res) => {
     let testSentence = "They lost in space at 230003";
     const testRegex = /[^a-d0-2\s]/gi;
     const result = testSentence.match(testRegex);
@@ -193,7 +193,7 @@ regexServer.get("/avoidLetters", (req, res) => {
 
 // character set [] & caret ^
 // match beginning string patterns
-regexServer.get("/matchBeginningStringPatterns", (req, res) => {
+regexServer.get("/regex/matchBeginningStringPatterns", (req, res) => {
     let testSentence = "Judy lost in space at 230003";
     const testRegex = /^judy/gi;
     const result = testRegex.test(testSentence);
@@ -212,7 +212,7 @@ regexServer.get("/matchBeginningStringPatterns", (req, res) => {
 
 // character set [] & caret ^
 // match ending string patterns
-regexServer.get("/matchEndingStringPatterns", (req, res) => {
+regexServer.get("/regex/matchEndingStringPatterns", (req, res) => {
     let testSentence = "Judy lost in space near resolute";
     const testRegex = /resolute$/gi;
     const result = testRegex.test(testSentence);
@@ -227,14 +227,6 @@ regexServer.get("/matchEndingStringPatterns", (req, res) => {
         result1: result1
     });
 });
-
-
-
-
-
-
-
-
 
 
 
