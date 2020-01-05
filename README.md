@@ -6,8 +6,10 @@ Used to identify the existence of certain pattern in a "string"
 In this article we will see different patterns which were used to match/test against the string. 
 ```
 # CMD's
+```
 > npm i
-> npm run server
+> npm run server    
+```
 
 # Note's
 ```
